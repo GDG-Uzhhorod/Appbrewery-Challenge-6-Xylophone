@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -39,7 +38,6 @@ class _MyHomePageState extends State<MyHomePage> {
             _buildKey(color: Colors.blueGrey, soundID: 5),
             _buildKey(color: Colors.blue, soundID: 6),
             _buildKey(color: Colors.deepPurple, soundID: 7),
-
           ],
         ),
       ),
@@ -52,14 +50,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Expanded _buildKey({Color color, int soundID}) {
-    Expanded(
+    return Expanded(
       child: FlatButton(
         color: color,
         onPressed: () {
           _playSound(soundID);
         },
       ),
-    )
-    ,
+    );
   }
 }
