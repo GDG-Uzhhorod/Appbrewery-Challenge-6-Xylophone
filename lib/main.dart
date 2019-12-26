@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -31,62 +32,14 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Expanded(
-              child: FlatButton(
-                color: Colors.red,
-                onPressed: () {
-                  _playSound(1);
-                },
-              ),
-            ),
-            Expanded(
-              child: FlatButton(
-                color: Colors.orange,
-                onPressed: () {
-                  _playSound(2);
-                },
-              ),
-            ),
-            Expanded(
-              child: FlatButton(
-                color: Colors.yellow,
-                onPressed: () {
-                  _playSound(3);
-                },
-              ),
-            ),
-            Expanded(
-              child: FlatButton(
-                color: Colors.green,
-                onPressed: () {
-                  _playSound(4);
-                },
-              ),
-            ),
-            Expanded(
-              child: FlatButton(
-                color: Colors.blueGrey,
-                onPressed: () {
-                  _playSound(5);
-                },
-              ),
-            ),
-            Expanded(
-              child: FlatButton(
-                color: Colors.blue,
-                onPressed: () {
-                  _playSound(6);
-                },
-              ),
-            ),
-            Expanded(
-              child: FlatButton(
-                color: Colors.deepPurple,
-                onPressed: () {
-                  _playSound(7);
-                },
-              ),
-            ),
+            _buildKey(color: Colors.red, soundID: 1),
+            _buildKey(color: Colors.orange, soundID: 2),
+            _buildKey(color: Colors.yellow, soundID: 3),
+            _buildKey(color: Colors.green, soundID: 4),
+            _buildKey(color: Colors.blueGrey, soundID: 5),
+            _buildKey(color: Colors.blue, soundID: 6),
+            _buildKey(color: Colors.deepPurple, soundID: 7),
+
           ],
         ),
       ),
@@ -96,5 +49,17 @@ class _MyHomePageState extends State<MyHomePage> {
   void _playSound(int id) {
     final player = AudioCache();
     player.play('note$id.wav');
+  }
+
+  Expanded _buildKey({Color color, int soundID}) {
+    Expanded(
+      child: FlatButton(
+        color: color,
+        onPressed: () {
+          _playSound(soundID);
+        },
+      ),
+    )
+    ,
   }
 }
